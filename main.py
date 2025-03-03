@@ -38,7 +38,7 @@ async def scrape_jobs_endpoint(req: LinkedInJobRequest):
         # Select all <div> elements that are direct children of <li> elements under <body>
         # Note: You might also try 'li > div[data-entity-urn]' or 'body li div[data-entity-urn]'
         # depending on actual HTML structure
-        divs = soup.select("body > li > div")
+        divs = soup.find_all("div", attrs={"data-entity-urn": True})
         
         # Extract the 'data-entity-urn' attribute from each matched <div>
         urn_list = []
